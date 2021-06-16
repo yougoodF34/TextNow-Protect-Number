@@ -1,4 +1,4 @@
-# TextNow保号【基于Cookie】，发短信给GV号
+# TextNow Protect Number【基于Cookie】，发短信给GV号
 TextNow保号任务，给指定号码发短信，支持多账号。
 本脚本基于selenium+无视窗浏览器，模拟用户真实操作，而非API调用。
 
