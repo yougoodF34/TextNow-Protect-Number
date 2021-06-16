@@ -2,8 +2,6 @@
 TextNow保号任务，给指定号码发短信，支持多账号。
 本脚本基于selenium+无视窗浏览器，模拟用户真实操作，而非API调用。
 
-[旧的脚本](https://github.com/Arronlong/py_scripts/blob/master/scripts/textnow/README-old.md)由于textnow从Recaptcha更换为Hcaptcha，登录时会触发校验验证码从而导致登录失败。
-
 当前脚本是基于Cookie的，之前没考虑cookie是因为看到有人说cookie登录不行，所以才没有做尝试，而是直接写的用户名密码登录，在Nodejs项目[textnow-autosend)](https://github.com/kaixuan1115/textnow-autosend)的启发下，发现cookie登录是可用的，所以又重新改造了项目，通过cookie进行登录。
 
 原理：开启缓存模板；优先从缓存中读取cookie文件，如果没有缓存，则通过secret中的`TEXTNOW_COOKIES`进行登录，登录成功后，获取最新的cookie，并保存cookie到缓存文件。
@@ -28,7 +26,13 @@ TextNow保号任务，给指定号码发短信，支持多账号。
 ![](https://cdn.jsdelivr.net/gh/Arronlong/cdn@master/blogImg/20210226124528.png)
 
 支持多账号，多接收方号码，**TEXTNOW_COOKIES**之间用***##,##**分割，其他参数用**半角逗号**分隔，账号于密码的个数要对应  
-示例：**TEXTNOW_USERNAME:aaa,bbb**，**TEXTNOW_PASSWORD:a11,b22**，**TEXTNOW_NUMBER：（123） 456-7890**、**TEXTNOW_MSG：from tn [by py_scripts]、TEXTNOW_COOKIES:xxx##,##xxx**，注意短信内容不要输入中文，否则会报错...
+示例：
+TEXTNOW_USERNAME:aaa,bbb，
+TEXTNOW_PASSWORD:a11,b22，
+TEXTNOW_NUMBER：（123)111-1111**,(123)222-2222,
+TEXTNOW_MSG：from tn [by py_scripts],
+TEXTNOW_COOKIES:xxx##,##xxx**，
+注意短信内容不要输入中文，否则会报错...
 ![](http://tu.yaohuo.me/imgs/2020/06/748bf9c0ca6143cd.png)
 
 
