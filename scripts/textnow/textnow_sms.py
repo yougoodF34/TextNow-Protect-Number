@@ -6,6 +6,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import hashlib
 
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options
+import undetected_chromedriver as uc
+
 import os
 import time
 import json
@@ -67,6 +71,16 @@ class Textnow:
     #driver.set_page_load_timeout(5)
     #driver.set_script_timeout(5)
     return driver
+   
+   
+    def getDriverOther(self):
+        options = Options()
+        options.add_argument("ignore-certificate-errors")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-blink-features=AutomationControlled")
+        browser = uc.Chrome(executable_path=ChromeDriverManager().install(), chrome_options=options)
+    return browser
+   
     
   #从缓存文件中读取cookie
   def read_cookie(self):
@@ -184,7 +198,7 @@ class Textnow:
   
   def send_text(self):
 
-    driver = self.getDriver();
+    driver = self.getDriverOther();
     
     if self.login(driver):
 
