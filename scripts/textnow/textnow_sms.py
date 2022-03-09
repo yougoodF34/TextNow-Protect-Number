@@ -201,7 +201,7 @@ class Textnow:
       current_html = driver.execute_script("return document.documentElement.outerHTML")
 #       time.sleep(10)
       scraper = cfscrape.create_scraper(delay = 10)
-      web_data = scraper.get("https://wallhere.com/").content
+      web_data = driver.execute_script("return document.documentElement.outerHTML")
       print(web_data)
  
       driver.execute_script("$('#recent-header .toast-container').remove();")
