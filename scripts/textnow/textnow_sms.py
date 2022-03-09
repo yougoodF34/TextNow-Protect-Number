@@ -195,7 +195,7 @@ class Textnow:
   
   def send_text(self):
 
-    driver = self.getDriverOther();
+    driver = self.getDriver();
     
     if self.login(driver):
 
@@ -209,8 +209,10 @@ class Textnow:
       #检测jQuery是否存在，如果不存在，则手动加载一次
       driver.execute_script("if(!window.jQuery){var scriptEle=document.createElement('script');scriptEle.src='https://cdn.jsdelivr.net/gh/jquery/jquery@3.2.1/dist/jquery.min.js';document.body.append(scriptEle)}")
       time.sleep(3)
-  #    current_html = driver.execute_script("return document.documentElement.outerHTML")
-#       time.sleep(10)
+  #   current_html = driver.execute_script("return document.documentElement.outerHTML")
+      time.sleep(10)
+   #重新打开页面
+      driver.get(self.msg_url)
 #      scraper = cfscrape.create_scraper(delay = 10)
       web_data = driver.execute_script("return document.documentElement.outerHTML")
       print("输出当前页面内容")
