@@ -9,7 +9,7 @@ import hashlib
 import os
 import time
 import json
-import cfscrape
+#import cfscrape
 import importlib,sys
 importlib.reload(sys)
 
@@ -200,7 +200,7 @@ class Textnow:
       time.sleep(3)
       current_html = driver.execute_script("return document.documentElement.outerHTML")
 #       time.sleep(10)
-      scraper = cfscrape.create_scraper(delay = 10)
+#      scraper = cfscrape.create_scraper(delay = 10)
       web_data = driver.execute_script("return document.documentElement.outerHTML")
       print(web_data)
  
