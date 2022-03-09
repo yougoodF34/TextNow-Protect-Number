@@ -74,8 +74,9 @@ class Textnow:
    
    
     def getDriverOther(self):
+        print("进入谷歌驱动")
         browser = uc.Chrome(version_main=95)
-    return browser
+        return browser
    
     
   #从缓存文件中读取cookie
