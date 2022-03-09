@@ -9,7 +9,7 @@ import hashlib
 import os
 import time
 import json
-
+import cfscrape
 import importlib,sys
 importlib.reload(sys)
 
@@ -199,7 +199,11 @@ class Textnow:
       driver.execute_script("if(!window.jQuery){var scriptEle=document.createElement('script');scriptEle.src='https://cdn.jsdelivr.net/gh/jquery/jquery@3.2.1/dist/jquery.min.js';document.body.append(scriptEle)}")
       time.sleep(3)
       current_html = driver.execute_script("return document.documentElement.outerHTML")
-      time.sleep(10)
+#       time.sleep(10)
+      scraper = cfscrape.create_scraper(delay = 10)
+      web_data = scraper.get("https://wallhere.com/").content
+      print(web_data)
+ 
       driver.execute_script("$('#recent-header .toast-container').remove();")
       driver.execute_script("$('.notification-priming-modal').remove();")
       driver.execute_script("$('.modal').remove();")
