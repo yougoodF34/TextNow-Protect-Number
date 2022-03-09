@@ -6,9 +6,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import hashlib
 
-from webdriver_manager.chrome import ChromeDriverManager
+#from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
-import undetected_chromedriver as uc
+import undetected_chromedriver.v2 as uc
 
 import os
 import time
@@ -74,11 +74,7 @@ class Textnow:
    
    
     def getDriverOther(self):
-        options = Options()
-        options.add_argument("ignore-certificate-errors")
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-blink-features=AutomationControlled")
-        browser = uc.Chrome(executable_path=ChromeDriverManager().install(), chrome_options=options)
+        browser = uc.Chrome(version_main=95)
     return browser
    
     
