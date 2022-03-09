@@ -46,7 +46,7 @@ class Textnow:
     #https://github.com/mozilla/geckodriver/releases
     options = webdriver.FirefoxOptions()
     options.add_argument('-headless')  # 无头参数
-    #options.add_argument('-private')  # 隐身模式
+    options.add_argument('-private')  # 隐身模式
     driver = webdriver.Firefox(options=options)
     #
     #driver = webdriver.Firefox(executable_path='geckodriver', options=options)
