@@ -97,6 +97,55 @@ class Textnow:
    # driver = uc.Chrome(executable_path = chrome_driver, chrome_options=chrome_option)
     return driver
    
+   
+   
+   def getChromeDriver(self):
+    #profile = webdriver.FirefoxProfile()
+    #proxy = '127.0.0.1:10808'
+    #ip, port = proxy.split(":")
+    #port = int(port)
+    ## 不使用代理的协议，注释掉对应的选项即可
+    #settings = {
+    #  'network.proxy.type': 1,
+    #  'network.proxy.http': ip,
+    #  'network.proxy.http_port': port,
+    #  'network.proxy.ssl': ip,  # https的网站,
+    #  'network.proxy.ssl_port': port,
+    #}
+    #
+    ## 更新配置文件
+    #for key, value in settings.items():
+    #    profile.set_preference(key, value)
+    #profile.update_preferences()
+    
+    #https://github.com/mozilla/geckodriver/releases
+    
+    
+    #
+    #driver = webdriver.Firefox(executable_path='geckodriver', options=options)
+    #driver = webdriver.Firefox(firefox_profile=profile, options=options)
+    #driver = webdriver.Firefox(proxy = proxy)
+
+    #https://sites.google.com/a/chromium.org/chromedriver/home
+    #options = webdriver.ChromeOptions()
+    #options.add_argument('--headless')# 无头参数
+    #options.add_argument('--disable-web-security')# 禁用web安全参数
+    #options.add_argument('--incognito')# 无痕参数
+    #options.add_argument('--user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36"')# user-agent参数
+    
+    #chrome_driver = '/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/seleniumbase-1.42.4-py3.7.egg/seleniumbase/drivers/chromedriver'  #chromedriver的文件位置
+    chrome_driver = '/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seleniumbase-1.42.4-py3.8.egg/seleniumbase/drivers/chromedriver'
+    driver = webdriver.Chrome(executable_path = chrome_driver, chrome_options=options)   
+    
+    #这两种设置都进行才有效
+    #driver.set_page_load_timeout(5)
+    #driver.set_script_timeout(5)
+    return driver
+   
+   
+   
+   
+   
     
   #从缓存文件中读取cookie
   def read_cookie(self):
@@ -214,8 +263,8 @@ class Textnow:
   
   def send_text(self):
 
-    driver = self.getDriverOther()
-    
+    #driver = self.getDriverOther()
+    driver = self.getChromeDriver()
     if self.login(driver):
 
       # remove通知提示框
