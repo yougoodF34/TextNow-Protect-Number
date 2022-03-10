@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import hashlib
 
 #from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.options import Options
+#from selenium.webdriver.chrome.options import Options
 #import undetected_chromedriver.v2 as uc
 import undetected_chromedriver.v2 as uc
 
@@ -80,12 +80,13 @@ class Textnow:
    #uc.TARGET_VERSION = 98
     #driver = uc.Chrome()
    #
-    chrome_options = uc.ChromeOptions()
-    chrome_options.add_argument("--headless")
-    chrome_options.add_argument("--no-sandbox")
+    options = webdriver.ChromeOptions() 
+    options.add_argument("start-maximized")
+    driver = uc.Chrome(options=options)
     #chrome_options.add_argument(f"user-agent={user_agents}")
     #chrome_path = which("./chromedriver")
-    driver = uc.Chrome()
+#     driver = uc.Chrome()
+   # driver = uc.Chrome(executable_path = chrome_driver, chrome_options=chrome_option)
     return driver
    
     
