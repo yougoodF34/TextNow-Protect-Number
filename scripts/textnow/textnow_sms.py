@@ -92,7 +92,8 @@ class Textnow:
     chrome_options.add_argument('--no-default-browser-check')
     chrome_options.add_argument('--password-store=basic')
     chrome_options.add_argument('--no-sandbox')
-    driver = uc.Chrome(options=chrome_options, executable_path='./driver/chromedriver')
+    chrome_driver = '/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seleniumbase-1.42.4-py3.8.egg/seleniumbase/drivers/chromedriver'
+    driver = uc.Chrome(options=chrome_options, executable_path=chrome_driver)
    # driver = uc.Chrome(executable_path = chrome_driver, chrome_options=chrome_option)
     return driver
    
