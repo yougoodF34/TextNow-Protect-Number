@@ -80,12 +80,19 @@ class Textnow:
    #uc.TARGET_VERSION = 98
     #driver = uc.Chrome()
    #
-    options = webdriver.ChromeOptions() 
-    options.add_argument("start-maximized")
-    driver = uc.Chrome(options=options)
-    #chrome_options.add_argument(f"user-agent={user_agents}")
-    #chrome_path = which("./chromedriver")
-#     driver = uc.Chrome()
+   chrome_options = uc.ChromeOptions()
+   chrome_options.add_argument("--disable-extensions")
+   chrome_options.add_argument("--disable-popup-blocking")
+   chrome_options.add_argument("--profile-directory=Default")
+   chrome_options.add_argument("--ignore-certificate-errors")
+   chrome_options.add_argument("--disable-plugins-discovery")
+   chrome_options.add_argument("--incognito")
+   chrome_options.add_argument('--no-first-run')
+   chrome_options.add_argument('--no-service-autorun')
+   chrome_options.add_argument('--no-default-browser-check')
+   chrome_options.add_argument('--password-store=basic')
+   chrome_options.add_argument('--no-sandbox')
+   driver = uc.Chrome(options=chrome_options, executable_path='./driver/chromedriver')
    # driver = uc.Chrome(executable_path = chrome_driver, chrome_options=chrome_option)
     return driver
    
