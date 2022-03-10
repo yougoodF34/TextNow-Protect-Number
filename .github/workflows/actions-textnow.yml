@@ -30,7 +30,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install cfscrape
-        pip install undetected-chromedriver
+        #pip install undetected-chromedriver
+        pip install  git+https://github.com/ultrafunkamsterdam/undetected-chromedriver.git
         pip install webdrivermanager
     - name: Install SeleniumBase
       run: |
