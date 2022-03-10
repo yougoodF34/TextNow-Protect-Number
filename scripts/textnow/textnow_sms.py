@@ -75,7 +75,7 @@ class Textnow:
    
   def getDriverOther(self):
     print("进入谷歌驱动")
-    browser = uc.Chrome(version_main=95)
+    browser = uc.Chrome(version_main=96)
     return driver
    
     
@@ -195,7 +195,7 @@ class Textnow:
   
   def send_text(self):
 
-    driver = self.getDriver();
+    driver = self.getDriverOther()
     
     if self.login(driver):
 
