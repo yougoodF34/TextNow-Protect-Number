@@ -83,7 +83,7 @@ class Textnow:
     chrome_options = uc.ChromeOptions()
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument(f"user-agent={user_agents}")
+    #chrome_options.add_argument(f"user-agent={user_agents}")
     chrome_path = which("./chromedriver")
     driver = uc.Chrome()
     return driver
