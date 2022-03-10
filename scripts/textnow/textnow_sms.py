@@ -77,7 +77,7 @@ class Textnow:
   def getDriverOther(self):
     print("进入谷歌驱动")
     #browser = uc.Chrome(version_main=96)
-    uc.TARGET_VERSION = 99
+    uc.TARGET_VERSION = 98
     driver = uc.Chrome()
     return driver
    
