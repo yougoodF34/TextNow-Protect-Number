@@ -76,10 +76,17 @@ class Textnow:
    
   def getDriverOther(self):
     print("进入谷歌驱动")
-    browser = uc.Chrome(version_main=98)
+   #browser = uc.Chrome(version_main=98)
    #uc.TARGET_VERSION = 98
     #driver = uc.Chrome()
-    return browser
+   #
+    chrome_options = uc.ChromeOptions()
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument(f"user-agent={user_agents}")
+    chrome_path = which("./chromedriver")
+    driver = uc.Chrome(
+    return driver
    
     
   #从缓存文件中读取cookie
