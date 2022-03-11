@@ -120,6 +120,8 @@ class Textnow:
     #options.add_argument('--incognito')# 无痕参数
     #driver = webdriver.Chrome(executable_path = chrome_driver, chrome_options=options)   
     chrome_options = webdriver.ChromeOptions()
+
+    chrome_options.add_argument('--headless')
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--start-maximized')
     chrome_options.add_argument('--start-fullscreen')
