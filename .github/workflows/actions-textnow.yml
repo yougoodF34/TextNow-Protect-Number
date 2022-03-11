@@ -43,7 +43,7 @@ jobs:
     #    flake8 . --count --show-source --statistics --exclude=temp
     - name: Install Chrome and Firefox
       run: |
-        sudo apt install google-chrome-stable 99.0.4844.51
+        sudo apt install google-chrome-stable
         sudo apt-get install firefox
     - name: Install chromedriver and geckodriver (Firefox Webdriver)
       run: |
