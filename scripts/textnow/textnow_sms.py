@@ -112,8 +112,8 @@ class Textnow:
    
    
   def getChromeDriver(self):
-    #chrome_driver = '/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/seleniumbase-1.42.4-py3.7.egg/seleniumbase/drivers/chromedriver'  #chromedriver的文件位置
-    #chrome_driver = '/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seleniumbase-1.42.4-py3.8.egg/seleniumbase/drivers/chromedriver'
+     #chromedriver的文件位置
+    chrome_driver = '/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seleniumbase-1.42.4-py3.8.egg/seleniumbase/drivers/chromedriver'
     #options = webdriver.ChromeOptions()
     #options.add_argument('--headless')# 无头参数
     #options.add_argument('--disable-web-security')# 禁用web安全参数
@@ -121,13 +121,29 @@ class Textnow:
     #driver = webdriver.Chrome(executable_path = chrome_driver, chrome_options=options)   
     chrome_options = Options()
     chrome_options.add_argument('--no-sandbox')
-    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--start-maximized')
+    chrome_options.add_argument('--start-fullscreen')
+    chrome_options.add_argument('--single-process')
     chrome_options.add_argument('--disable-dev-shm-usage')
-    driver = webdriver.Chrome(options=chrome_options)
-    
-    #这两种设置都进行才有效
-    #driver.set_page_load_timeout(5)
-    #driver.set_script_timeout(5)
+    chrome_options.add_argument("--incognito")
+    chrome_options.add_argument('--disable-blink-features=AutomationControlled')
+    chrome_options.add_argument('--disable-blink-features=AutomationControlled')
+    chrome_options.add_experimental_option('useAutomationExtension', False)
+    chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    chrome_options.add_argument("disable-infobars")
+    #chrome_options.add_argument('--no-sandbox')
+    #chrome_options.add_argument('--headless')
+    #chrome_options.add_argument('--disable-dev-shm-usage')
+    #driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Chrome(executable_path=chrome_driver, options=chrome_options)
+    driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+    driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
+            "source":
+                "const newProto = navigator.__proto__;"
+                "delete newProto.webdriver;"
+                "navigator.__proto__ = newProto;"
+        })
+   
     return driver
    
    
@@ -251,8 +267,8 @@ class Textnow:
   
   def send_text(self):
 
-    driver = self.getDriverOther()
-    #driver = self.getChromeDriver()
+    #driver = self.getDriverOther()
+    driver = self.getChromeDriver()
     #driver = self.getDriverOther()
     if self.login(driver):
 
