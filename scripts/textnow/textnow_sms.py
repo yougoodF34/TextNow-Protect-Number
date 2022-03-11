@@ -14,7 +14,7 @@ import undetected_chromedriver as uc
 import os
 import time
 import json
- #import cfscrape
+import cfscrape
 import importlib,sys
 importlib.reload(sys)
 
@@ -93,6 +93,10 @@ class Textnow:
    # driver = uc.Chrome(executable_path = chrome_driver, chrome_options=options)
     return driver
    
+  def getDriverTwo(self):
+    print("进入驱动")
+    scraper = cfscrape.create_scraper(delay = 10)
+    return driver
    
    
   def getChromeDriver(self):
@@ -231,9 +235,9 @@ class Textnow:
   
   def send_text(self):
 
-    #driver = self.getDriverOther()
+    driver = self.getDriverTwo()
     #driver = self.getChromeDriver()
-    driver = self.getDriverOther()
+    #driver = self.getDriverOther()
     if self.login(driver):
 
       # remove通知提示框
