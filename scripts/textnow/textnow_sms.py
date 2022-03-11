@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options
 import hashlib
 
 #from webdriver_manager.chrome import ChromeDriverManager
@@ -111,14 +112,18 @@ class Textnow:
    
    
   def getChromeDriver(self):
- 
     #chrome_driver = '/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/seleniumbase-1.42.4-py3.7.egg/seleniumbase/drivers/chromedriver'  #chromedriver的文件位置
-    chrome_driver = '/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seleniumbase-1.42.4-py3.8.egg/seleniumbase/drivers/chromedriver'
-    options = webdriver.ChromeOptions()
-    options.add_argument('--headless')# 无头参数
-    options.add_argument('--disable-web-security')# 禁用web安全参数
-    options.add_argument('--incognito')# 无痕参数
-    driver = webdriver.Chrome(executable_path = chrome_driver, chrome_options=options)   
+    #chrome_driver = '/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seleniumbase-1.42.4-py3.8.egg/seleniumbase/drivers/chromedriver'
+    #options = webdriver.ChromeOptions()
+    #options.add_argument('--headless')# 无头参数
+    #options.add_argument('--disable-web-security')# 禁用web安全参数
+    #options.add_argument('--incognito')# 无痕参数
+    #driver = webdriver.Chrome(executable_path = chrome_driver, chrome_options=options)   
+    chrome_options = Options()
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    driver = webdriver.Chrome(options=chrome_options)
     
     #这两种设置都进行才有效
     #driver.set_page_load_timeout(5)
