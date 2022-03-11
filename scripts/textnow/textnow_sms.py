@@ -8,8 +8,8 @@ import hashlib
 
 #from webdriver_manager.chrome import ChromeDriverManager
 #from selenium.webdriver.chrome.options import Options
-#import undetected_chromedriver.v2 as uc
-import undetected_chromedriver as uc
+import undetected_chromedriver.v2 as uc
+#import undetected_chromedriver as uc
 
 import os
 import time
