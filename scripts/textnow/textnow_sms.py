@@ -80,7 +80,7 @@ class Textnow:
    #uc.TARGET_VERSION = 98
     #driver = uc.Chrome()
    #
-    chrome_options = uc.ChromeOptions()
+    #chrome_options = uc.ChromeOptions()
 #     chrome_options.add_argument("--disable-extensions")
 #     chrome_options.add_argument("--disable-popup-blocking")
 #     chrome_options.add_argument("--profile-directory=Default")
@@ -93,11 +93,11 @@ class Textnow:
 #     chrome_options.add_argument('--password-store=basic')
 #     chrome_options.add_argument('--no-sandbox')
 #     chrome_options.add_experimental_option('debuggerAddress', '127.0.0.1:9222')
-    chrome_options.add_argument('--headless')# 无头参数
+    #chrome_options.add_argument('--headless')# 无头参数
     #chrome_options.add_argument('--disable-web-security')# 禁用web安全参数
     #chrome_options.add_argument('--incognito')# 无痕参数
     chrome_driver = '/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seleniumbase-1.42.4-py3.8.egg/seleniumbase/drivers/chromedriver'
-    driver = uc.Chrome(options=chrome_options)
+    driver = uc.Chrome()
    # driver = uc.Chrome(executable_path = chrome_driver, chrome_options=options)
     return driver
    
