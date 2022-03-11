@@ -84,7 +84,7 @@ class Textnow:
   
     options = webdriver.ChromeOptions() 
     options.headless = True
-    driver = uc.Chrome(version_main=99)
+    driver = uc.Chrome(options=options ,version_main=99)
 
     #chrome_options.add_argument('--headless')# 无头参数
     #chrome_options.add_argument('--disable-web-security')# 禁用web安全参数
