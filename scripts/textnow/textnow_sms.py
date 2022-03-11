@@ -87,13 +87,13 @@ class Textnow:
     #options.add_argument('--headless')
     #options.add_argument('--no-sandbox')
     #options.add_argument('--disable-dev-shm-usage')
-    options = webdriver.ChromeOptions() 
+    options = uc.ChromeOptions() 
     options.add_argument("start-maximized")
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
     chrome_driver='/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seleniumbase-1.42.4-py3.8.egg/seleniumbase/drivers/chromedriver'
-    driver = uc.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=options)
+    driver = uc.Chrome(executable_path = os.environ.get("CHROMEDRIVER_PATH"), options = options)
     
     
 
