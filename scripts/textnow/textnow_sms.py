@@ -84,8 +84,11 @@ class Textnow:
   
     options = webdriver.ChromeOptions() 
     options.add_argument("start-maximized")
-    options.headless = True
-    driver = uc.Chrome(options=options)
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+    chrome_driver='/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seleniumbase-1.42.4-py3.8.egg/seleniumbase/drivers/chromedriver'
+    driver = uc.Chrome(executable_path=chrome_driver ,options=options)
     
     
 
