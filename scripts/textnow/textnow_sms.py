@@ -84,7 +84,7 @@ class Textnow:
   
     options = webdriver.ChromeOptions() 
     options.add_argument("start-maximized")
-#     options.headless = True
+    options.headless = True
     driver = uc.Chrome(options=options)
     
     
