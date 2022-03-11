@@ -88,6 +88,7 @@ class Textnow:
     #options.add_argument('--no-sandbox')
     #options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--start-maximized')
+    options.add_argument("--disable-blink-features=AutomationControlled")
     options.add_argument(f'--user-data-dir={path_to_data_dir}')
     options.add_argument(f'--profile-directory=Profile 1')
     chrome_driver='/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seleniumbase-1.42.4-py3.8.egg/seleniumbase/drivers/chromedriver'
