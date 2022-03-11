@@ -113,13 +113,13 @@ class Textnow:
    
   def getChromeDriver(self):
      #chromedriver的文件位置
-    chrome_driver = '/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seleniumbase-1.42.4-py3.8.egg/seleniumbase/drivers/chromedriver'
+    chrome_driver='/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seleniumbase-1.42.4-py3.8.egg/seleniumbase/drivers/chromedriver'
     #options = webdriver.ChromeOptions()
     #options.add_argument('--headless')# 无头参数
     #options.add_argument('--disable-web-security')# 禁用web安全参数
     #options.add_argument('--incognito')# 无痕参数
     #driver = webdriver.Chrome(executable_path = chrome_driver, chrome_options=options)   
-    chrome_options = Options()
+    chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--start-maximized')
     chrome_options.add_argument('--start-fullscreen')
@@ -135,7 +135,7 @@ class Textnow:
     #chrome_options.add_argument('--headless')
     #chrome_options.add_argument('--disable-dev-shm-usage')
     #driver = webdriver.Chrome(options=chrome_options)
-    driver = webdriver.Chrome(executable_path=chrome_driver, options=chrome_options)
+    driver = webdriver.Chrome(executable_path = chrome_driver, options = chrome_options)
     driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
     driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
             "source":
