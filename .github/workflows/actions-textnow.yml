@@ -47,7 +47,7 @@ jobs:
         sudo apt-get install firefox
     - name: Install chromedriver and geckodriver (Firefox Webdriver)
       run: |
-        seleniumbase install chromedriver 98.0.4758.102
+        seleniumbase install chromedriver 99.0.4844.51
         seleniumbase install geckodriver
     #- name: Make sure pytest is working
     #  run: |
