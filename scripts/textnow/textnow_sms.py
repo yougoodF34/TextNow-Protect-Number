@@ -95,7 +95,7 @@ class Textnow:
     chrome_options.add_argument('--headless')# 无头参数
     chrome_options.add_argument('--disable-web-security')# 禁用web安全参数
     chrome_options.add_argument('--incognito')# 无痕参数
-    driver = uc.Chrome()
+    driver = uc.Chrome(options=chrome_options)
    # driver = uc.Chrome(executable_path = chrome_driver, chrome_options=options)
     return driver
    
