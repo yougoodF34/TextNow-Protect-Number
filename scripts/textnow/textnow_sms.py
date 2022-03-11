@@ -8,7 +8,7 @@ import hashlib
 
 #from webdriver_manager.chrome import ChromeDriverManager
 #from selenium.webdriver.chrome.options import Options
-import undetected_chromedriver.v2 as uc
+import undetected_chromedriver as uc
 #import undetected_chromedriver as uc
 
 import os
@@ -81,18 +81,19 @@ class Textnow:
     #driver = uc.Chrome()
    #
     #chrome_options = uc.ChromeOptions()
-    path_to_data_dir='/opt/hostedtoolcache/Python/3.8.12/x64'
-    options = webdriver.ChromeOptions() 
+    #path_to_data_dir='/opt/hostedtoolcache/Python/3.8.12/x64'
+    #options = webdriver.ChromeOptions() 
     #options.add_argument("start-maximized")
-    options.add_argument('--headless')
+    #options.add_argument('--headless')
     #options.add_argument('--no-sandbox')
     #options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--start-maximized')
-    options.add_argument("--disable-blink-features=AutomationControlled")
-    options.add_argument(f'--user-data-dir={path_to_data_dir}')
-    options.add_argument(f'--profile-directory=Profile 1')
+    options = webdriver.ChromeOptions() 
+    options.add_argument("start-maximized")
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
     chrome_driver='/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seleniumbase-1.42.4-py3.8.egg/seleniumbase/drivers/chromedriver'
-    driver = uc.Chrome(executable_path=chrome_driver ,options=options)
+    driver = uc.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=options)
     
     
 
