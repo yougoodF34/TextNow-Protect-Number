@@ -96,7 +96,7 @@ class Textnow:
   def getDriverTwo(self):
     print("进入驱动")
     scraper = cfscrape.create_scraper(delay = 10)
-    return driver
+    return scraper
    
    
   def getChromeDriver(self):
