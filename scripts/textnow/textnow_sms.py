@@ -94,8 +94,8 @@ class Textnow:
 #     chrome_options.add_argument('--no-sandbox')
 #     chrome_options.add_experimental_option('debuggerAddress', '127.0.0.1:9222')
     chrome_options.add_argument('--headless')# 无头参数
-    chrome_options.add_argument('--disable-web-security')# 禁用web安全参数
-    chrome_options.add_argument('--incognito')# 无痕参数
+    #chrome_options.add_argument('--disable-web-security')# 禁用web安全参数
+    #chrome_options.add_argument('--incognito')# 无痕参数
     chrome_driver = '/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seleniumbase-1.42.4-py3.8.egg/seleniumbase/drivers/chromedriver'
     driver = uc.Chrome(options=chrome_options)
    # driver = uc.Chrome(executable_path = chrome_driver, chrome_options=options)
@@ -257,7 +257,7 @@ class Textnow:
   #   current_html = driver.execute_script("return document.documentElement.outerHTML")
       time.sleep(10)
    #重新打开页面
-      driver.get(self.msg_url)
+ #   driver.get(self.msg_url)
 #      scraper = cfscrape.create_scraper(delay = 10)
       web_data = driver.execute_script("return document.documentElement.outerHTML")
       print("输出当前页面内容")
