@@ -235,7 +235,7 @@ class Textnow:
   
   def send_text(self):
 
-    driver = self.getDriverTwo()
+    driver = self.getDriverOther()
     #driver = self.getChromeDriver()
     #driver = self.getDriverOther()
     if self.login(driver):
