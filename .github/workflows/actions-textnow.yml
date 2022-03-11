@@ -68,6 +68,7 @@ jobs:
         TEXTNOW_COOKIES: ${{ secrets.TEXTNOW_COOKIES }}
         TEXTNOW_NUMBER: ${{ secrets.TEXTNOW_NUMBER }}
         TEXTNOW_MSG: ${{ secrets.TEXTNOW_MSG }}
+        CHROMEDRIVER_PATH: ${{ secrets.CHROMEDRIVER_PATH }}
       run: |
         mkdir .cache
         if [ -e ~/cache.tgz ]; then tar zxf ~/cache.tgz; fi
