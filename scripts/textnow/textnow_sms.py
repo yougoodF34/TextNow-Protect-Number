@@ -83,8 +83,11 @@ class Textnow:
     #chrome_options = uc.ChromeOptions()
   
     options = webdriver.ChromeOptions() 
-    options.headless = True
-    driver = uc.Chrome(options=options ,version_main=99)
+    options.add_argument("start-maximized")
+#     options.headless = True
+    driver = uc.Chrome(options=options)
+    
+    
 
     #chrome_options.add_argument('--headless')# 无头参数
     #chrome_options.add_argument('--disable-web-security')# 禁用web安全参数
