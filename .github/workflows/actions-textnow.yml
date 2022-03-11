@@ -43,11 +43,11 @@ jobs:
     #    flake8 . --count --show-source --statistics --exclude=temp
     - name: Install Chrome and Firefox
       run: |
-        sudo apt install google-chrome-stable
+        sudo apt install google-chrome-stable 99.0.4844.0
         sudo apt-get install firefox
     - name: Install chromedriver and geckodriver (Firefox Webdriver)
       run: |
-        seleniumbase install chromedriver 99.0.4844.51
+        seleniumbase install chromedriver 99.0.4844.0
         seleniumbase install geckodriver
     #- name: Make sure pytest is working
     #  run: |
