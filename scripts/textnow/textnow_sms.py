@@ -80,21 +80,15 @@ class Textnow:
    #uc.TARGET_VERSION = 98
     #driver = uc.Chrome()
    #
-    chrome_options = uc.ChromeOptions()
-    #chrome_options.add_argument("--disable-extensions")
-    #chrome_options.add_argument("--disable-popup-blocking")
-   # chrome_options.add_argument("--profile-directory=Default")
-  #  chrome_options.add_argument("--ignore-certificate-errors")
-  #  chrome_options.add_argument("--disable-plugins-discovery")
-  #  chrome_options.add_argument('--no-first-run')
-   # chrome_options.add_argument('--no-service-autorun')
-  #  chrome_options.add_argument('--no-default-browser-check')
- #   chrome_options.add_argument('--password-store=basic')
-#    chrome_options.add_argument('--no-sandbox')
-#     chrome_options.add_experimental_option('debuggerAddress', '127.0.0.1:9222')
-    chrome_options.add_argument('--headless')# 无头参数
-    chrome_options.add_argument('--disable-web-security')# 禁用web安全参数
-    chrome_options.add_argument('--incognito')# 无痕参数
+    #chrome_options = uc.ChromeOptions()
+  
+    options = webdriver.ChromeOptions() 
+    options.headless = True
+    driver = uc.Chrome(options=options)
+
+    #chrome_options.add_argument('--headless')# 无头参数
+    #chrome_options.add_argument('--disable-web-security')# 禁用web安全参数
+    #chrome_options.add_argument('--incognito')# 无痕参数
     driver = uc.Chrome(options=chrome_options)
    # driver = uc.Chrome(executable_path = chrome_driver, chrome_options=options)
     return driver
