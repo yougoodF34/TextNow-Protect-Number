@@ -128,30 +128,18 @@ class Textnow:
     #driver = webdriver.Chrome(executable_path = chrome_driver, chrome_options=options)   
     chrome_options = webdriver.ChromeOptions()
 
-    chrome_options.add_argument('--headless')
-    chrome_options.add_argument('--no-sandbox')
-    chrome_options.add_argument('--start-maximized')
-    chrome_options.add_argument('--start-fullscreen')
-    chrome_options.add_argument('--single-process')
-    chrome_options.add_argument('--disable-dev-shm-usage')
-    chrome_options.add_argument("--incognito")
-    chrome_options.add_argument('--disable-blink-features=AutomationControlled')
-    chrome_options.add_argument('--disable-blink-features=AutomationControlled')
-    chrome_options.add_experimental_option('useAutomationExtension', False)
+    #options = webdriver.ChromeOptions()
+# If options.headless = True, the website will not load
+    chrome_options.headless = False
+    chrome_options.add_argument("--window-size=1920,1080") 
     chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
-    chrome_options.add_argument("disable-infobars")
-    #chrome_options.add_argument('--no-sandbox')
-    #chrome_options.add_argument('--headless')
-    #chrome_options.add_argument('--disable-dev-shm-usage')
-    #driver = webdriver.Chrome(options=chrome_options)
-    driver = webdriver.Chrome(executable_path = chrome_driver, options = chrome_options)
-    driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-    driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
-            "source":
-                "const newProto = navigator.__proto__;"
-                "delete newProto.webdriver;"
-                "navigator.__proto__ = newProto;"
-        })
+    chrome_options.add_experimental_option('useAutomationExtension', False)
+    chrome_options.add_argument('--disable-blink-features=AutomationControlled')
+    chrome_options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36')
+
+    driver = webdriver.Chrome(options=chrome_options)
+    #driver = webdriver.Chrome(executable_path = chrome_driver, options = chrome_options)
+   
    
     return driver
    
