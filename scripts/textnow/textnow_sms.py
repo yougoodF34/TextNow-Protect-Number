@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
+from selenium_stealth import stealth
 import hashlib
 
 #from webdriver_manager.chrome import ChromeDriverManager
@@ -120,181 +121,23 @@ class Textnow:
    
   def getChromeDriver(self):
      #chromedriver的文件位置
-    chrome_driver='/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/seleniumbase-1.42.4-py3.8.egg/seleniumbase/drivers/chromedriver'
-    #options = webdriver.ChromeOptions()
-    #options.add_argument('--headless')# 无头参数
-    #options.add_argument('--disable-web-security')# 禁用web安全参数
-    #options.add_argument('--incognito')# 无痕参数
-    #driver = webdriver.Chrome(executable_path = chrome_driver, chrome_options=options)   
-    chrome_options = webdriver.ChromeOptions()
-
-    #options = webdriver.ChromeOptions()
-# If options.headless = True, the website will not load
-    chrome_options.headless = False
-    chrome_options.add_argument('--no-sandbox')
-    chrome_options.add_argument('--disable-dev-shm-usage')
-    chrome_options.add_argument("--window-size=1920,1080") 
-    chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
-    chrome_options.add_experimental_option('useAutomationExtension', False)
-    chrome_options.add_argument('--disable-blink-features=AutomationControlled')
-    chrome_options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36')
-
-    driver = webdriver.Chrome(options = chrome_options)
+    options = webdriver.ChromeOptions()
+    options.add_argument("start-maximized")
+    options.add_argument("--headless")
+    options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    options.add_experimental_option('useAutomationExtension', False)
+    driver = webdriver.Chrome(options=options)  
     
-    driver.execute_cdp_cmd('Page.addScriptToEvaluateOnNewDocument', {
-    "source": '''
-    Object.defineProperty(navigator, 'webdriver', {
-        get: () => undefined
-    });
-    Object.defineProperty(navigator, 'plugins', {
-            get: function() { return {"0":{"0":{}},"1":{"0":{}},"2":{"0":{},"1":{}}}; }
-    });
-    Object.defineProperty(navigator, 'languages', {
-        get: () => ["en-US", "en"]
-    });
-    Object.defineProperty(navigator, 'mimeTypes', {
-        get: function() { return {"0":{},"1":{},"2":{},"3":{}}; }
-    });
+    stealth(driver,
+        languages=["en-US", "en"],
+        vendor="Google Inc.",
+        platform="Win32",
+        webgl_vendor="Intel Inc.",
+        renderer="Intel Iris OpenGL Engine",
+        fix_hairline=True,
+        )
 
-    window.screenY=23;
-    window.screenTop=23;
-    window.outerWidth=1337;
-    window.outerHeight=825;
-    window.chrome =
-    {
-      app: {
-        isInstalled: false,
-      },
-      webstore: {
-        onInstallStageChanged: {},
-        onDownloadProgress: {},
-      },
-      runtime: {
-        PlatformOs: {
-          MAC: 'mac',
-          WIN: 'win',
-          ANDROID: 'android',
-          CROS: 'cros',
-          LINUX: 'linux',
-          OPENBSD: 'openbsd',
-        },
-        PlatformArch: {
-          ARM: 'arm',
-          X86_32: 'x86-32',
-          X86_64: 'x86-64',
-        },
-        PlatformNaclArch: {
-          ARM: 'arm',
-          X86_32: 'x86-32',
-          X86_64: 'x86-64',
-        },
-        RequestUpdateCheckStatus: {
-          THROTTLED: 'throttled',
-          NO_UPDATE: 'no_update',
-          UPDATE_AVAILABLE: 'update_available',
-        },
-        OnInstalledReason: {
-          INSTALL: 'install',
-          UPDATE: 'update',
-          CHROME_UPDATE: 'chrome_update',
-          SHARED_MODULE_UPDATE: 'shared_module_update',
-        },
-        OnRestartRequiredReason: {
-          APP_UPDATE: 'app_update',
-          OS_UPDATE: 'os_update',
-          PERIODIC: 'periodic',
-        },
-      },
-    };
-    window.navigator.chrome =
-    {
-      app: {
-        isInstalled: false,
-      },
-      webstore: {
-        onInstallStageChanged: {},
-        onDownloadProgress: {},
-      },
-      runtime: {
-        PlatformOs: {
-          MAC: 'mac',
-          WIN: 'win',
-          ANDROID: 'android',
-          CROS: 'cros',
-          LINUX: 'linux',
-          OPENBSD: 'openbsd',
-        },
-        PlatformArch: {
-          ARM: 'arm',
-          X86_32: 'x86-32',
-          X86_64: 'x86-64',
-        },
-        PlatformNaclArch: {
-          ARM: 'arm',
-          X86_32: 'x86-32',
-          X86_64: 'x86-64',
-        },
-        RequestUpdateCheckStatus: {
-          THROTTLED: 'throttled',
-          NO_UPDATE: 'no_update',
-          UPDATE_AVAILABLE: 'update_available',
-        },
-        OnInstalledReason: {
-          INSTALL: 'install',
-          UPDATE: 'update',
-          CHROME_UPDATE: 'chrome_update',
-          SHARED_MODULE_UPDATE: 'shared_module_update',
-        },
-        OnRestartRequiredReason: {
-          APP_UPDATE: 'app_update',
-          OS_UPDATE: 'os_update',
-          PERIODIC: 'periodic',
-        },
-      },
-    };
-    ['height', 'width'].forEach(property => {
-        const imageDescriptor = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, property);
-
-        // redefine the property with a patched descriptor
-        Object.defineProperty(HTMLImageElement.prototype, property, {
-            ...imageDescriptor,
-            get: function() {
-                // return an arbitrary non-zero dimension if the image failed to load
-            if (this.complete && this.naturalHeight == 0) {
-                return 20;
-            }
-                return imageDescriptor.get.apply(this);
-            },
-        });
-    });
-
-    const getParameter = WebGLRenderingContext.getParameter;
-    WebGLRenderingContext.prototype.getParameter = function(parameter) {
-        if (parameter === 37445) {
-            return 'Intel Open Source Technology Center';
-        }
-        if (parameter === 37446) {
-            return 'Mesa DRI Intel(R) Ivybridge Mobile ';
-        }
-
-        return getParameter(parameter);
-    };
-
-    const elementDescriptor = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetHeight');
-
-    Object.defineProperty(HTMLDivElement.prototype, 'offsetHeight', {
-        ...elementDescriptor,
-        get: function() {
-            if (this.id === 'modernizr') {
-            return 1;
-            }
-            return elementDescriptor.get.apply(this);
-        },
-    });
-    '''
-})
-    #driver = webdriver.Chrome(executable_path = chrome_driver, options = chrome_options)
-   
+  
    
     return driver
    
